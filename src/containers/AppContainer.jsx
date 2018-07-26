@@ -20,6 +20,7 @@ class AppContainer extends React.Component {
         title="Alan"
         quotes={this.props.quotes}
         handleClick={this.handleClick}
+        randomAlanQuote={this.props.randomAlanQuote}
       />
     )
   }
@@ -28,6 +29,7 @@ class AppContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     quotes: state.quotes,
+    randomAlanQuote: state.randomAlanQuote,
   }
 }
 

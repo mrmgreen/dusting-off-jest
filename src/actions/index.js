@@ -1,8 +1,7 @@
-export const RANDOM_ALAN_QUOTE = "RANDOM_ALAN_QUOTE";
+export const GET_RANDOM_ALAN_QUOTE = "GET_RANDOM_ALAN_QUOTE";
 
 export function getRandomAlanQuote() {
   return {
-    type: RANDOM_ALAN_QUOTE,
-    getPosts: true,
+    type: GET_RANDOM_ALAN_QUOTE,
   }
 }

@@ -1,5 +1,13 @@
+import { GET_RANDOM_ALAN_QUOTE } from '../actions';
+
 export default function(state=1, action) {
-  return {
-    quotes: state.quotes
-  };
+  switch(action.type) {
+    case "GET_RANDOM_ALAN_QUOTE":
+      return {
+        ...state,
+        randomAlanQuote: 'gerbils',
+      }
+    default:
+      return state
+  }
 }
