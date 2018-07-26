@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RandomQuotesButton from './RandomQuotesButton'
 
-export default function({ title, quotes, handleClick, randomAlanQuote }) {
+function App({ title, quotes, handleClick, randomAlanQuote }) {
   const displayQuote = function(quote, index) {
     return (
       <div className="quotes" key={index}>{quote}</div>
@@ -18,3 +19,12 @@ export default function({ title, quotes, handleClick, randomAlanQuote }) {
     </div>
   )
 }
+
+App.propTypes = {
+  title: PropTypes.string,
+  quotes: PropTypes.arrayOf(PropTypes.string),
+  handleClick: PropTypes.func,
+  randomAlanQuote: PropTypes.string,
+}
+
+export default App

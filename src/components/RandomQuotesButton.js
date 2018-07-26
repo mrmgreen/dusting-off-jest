@@ -1,5 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
-export default function({handleClick}) {
+function RandomQuotesButton({handleClick}) {
   return (<button onClick={handleClick}>Click</button>)
 }
+
+RandomQuotesButton.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+}
+
+export default RandomQuotesButton
