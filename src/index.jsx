@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import logger from 'redux-logger';
 import aReducer from './reducers';
 import AppContainer from './containers/AppContainer';
@@ -16,7 +17,7 @@ const initialQuotes = { quotes: [
 const store = createStore(
   aReducer,
   initialQuotes,
-  applyMiddleware(logger)
+  applyMiddleware(thunkMiddleware, logger)
 );
 
 ReactDOM.render(

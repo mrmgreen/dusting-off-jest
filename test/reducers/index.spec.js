@@ -1,5 +1,5 @@
 import reducer from '../../src/reducers';
-import { GET_RANDOM_ALAN_QUOTE } from '../../src/actions';
+import { RECEIVED_RANDOM_ALAN_QUOTE } from '../../src/actions';
 import { expect } from 'chai';
 
 describe('reducers', () => {
@@ -7,10 +7,11 @@ describe('reducers', () => {
     expect(reducer(undefined, {})).to.equal(1);
   })
 
-  it('should change the state of randomAlanQuote when action type is GET_RANDOM_ALAN_QUOTE', () => {
+  it('should return payload of action as randomAlanQuote when type is RECEIVED_RANDOM_ALAN_QUOTE', () => {
+    const quote = 'Scare a donkey';
     const expectedState = {
-      randomAlanQuote: 'gerbils'
+      randomAlanQuote: quote,
     }
-    expect(reducer({}, { type: GET_RANDOM_ALAN_QUOTE })).to.deep.equal(expectedState);
+    expect(reducer({}, { type: RECEIVED_RANDOM_ALAN_QUOTE, randomAlanQuote: quote })).to.deep.equal(expectedState);
   })
 })

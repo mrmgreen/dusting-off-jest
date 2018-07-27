@@ -14,7 +14,7 @@ function App({ title, quotes, handleClick, randomAlanQuote }) {
       {quotes && quotes.map(displayQuote)}
       <hr />
       <RandomQuotesButton handleClick={handleClick} />
-      <h2>{randomAlanQuote}</h2>
+      <h2 className="randomAlanQuote">{randomAlanQuote}</h2>
 
     </div>
   )

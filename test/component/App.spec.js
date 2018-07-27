@@ -22,4 +22,9 @@ describe("<App>", () => {
       expect(node.text()).to.equal(quotes[index]);
     })
   });
+  it('should render randomAlanQuote from the state', () => {
+    const randomAlanQuote = "Jet from Gladiators";
+    const component = shallow(<App randomAlanQuote={randomAlanQuote} />)
+    expect(component.find('.randomAlanQuote').text()).to.deep.equal(randomAlanQuote);
+  })
 });
