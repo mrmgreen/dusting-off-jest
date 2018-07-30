@@ -16,7 +16,7 @@ function receivedRandomAlanQuote(randomAlanQuote) {
 export function fetchRandomAlanQuote() {
   return function(dispatch) {
     dispatch(requestRandomAlanQuote())
-    return fetch('http://localhost:3000')
+    return fetch('http://localhost:3000/alan-quote')
     .then(
       response => response.json(),
       error => console.log('An error occurred', error)

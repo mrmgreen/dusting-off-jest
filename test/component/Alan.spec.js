@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import App from '../../src/components/App';
+import Alan from '../../src/components/Alan';
 import { expect } from 'chai';
 
-describe("<App>", () => {
+describe("<Alan>", () => {
   it('should render title prop as text', () => {
     const text = "the title";
-    const component = shallow(<App title={text}/>);
+    const component = shallow(<Alan title={text}/>);
     expect(component.find("h1").text()).to.equal(text);
   });
   it('should display quotes', () => {
@@ -16,7 +16,7 @@ describe("<App>", () => {
       "Jet from Gladiators to host a millennium barn dance at Yeovil aerodrome. Properly policed. It must not, repeat not, turn into an all-night rave.",
       "Wings? They’re only the band The Beatles could've been!"
     ];
-    const component = mount(<App quotes={quotes} />);
+    const component = mount(<Alan quotes={quotes} />);
     const quotesInDom = component.find('.quotes');
     quotesInDom.forEach((node, index) => {
       expect(node.text()).to.equal(quotes[index]);
@@ -24,7 +24,7 @@ describe("<App>", () => {
   });
   it('should render randomAlanQuote from the state', () => {
     const randomAlanQuote = "Jet from Gladiators";
-    const component = shallow(<App randomAlanQuote={randomAlanQuote} />)
+    const component = shallow(<Alan randomAlanQuote={randomAlanQuote} />)
     expect(component.find('.randomAlanQuote').text()).to.deep.equal(randomAlanQuote);
   })
 });

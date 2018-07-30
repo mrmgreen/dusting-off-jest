@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import App from '../components/App';
+import Alan from '../components/Alan';
 import { fetchRandomAlanQuote } from '../actions';
 
 class AppContainer extends React.Component {
@@ -16,7 +16,7 @@ class AppContainer extends React.Component {
 
   render() {
     return (
-      <App
+      <Alan
         title="Alan"
         quotes={this.props.quotes}
         handleClick={this.handleClick}
