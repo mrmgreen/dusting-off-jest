@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import { createBrowserHistory } from 'history';
+import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router';
+import { Route, Switch } from 'react-router';
 import logger from 'redux-logger';
 import aReducer from './reducers';
 import AppContainer from './containers/AppContainer';
 
+const history = createBrowserHistory();
 const initialQuotes = { quotes: [
   "I'd just like to fly a helicopter all around Norfolk. You know, swoop down over a field. Scare a donkey so that it falls into a river. Hover over one of those annoying families that go on holidays on bikes. And shout at them \"get out of the area!\" and watch them panic!",
   "Sunday Bloody Sunday. What a great song. It really encapsulates the frustration of a Sunday, doesn't it?",
@@ -15,14 +19,23 @@ const initialQuotes = { quotes: [
 ]};
 
 const store = createStore(
-  aReducer,
+  connectRouter(history)(aReducer),
   initialQuotes,
-  applyMiddleware(thunkMiddleware, logger)
+  compose(
+    applyMiddleware(
+        routerMiddleware(history), thunkMiddleware, logger
+    ),
+  ),
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppContainer />
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route exact path="/" component={AppContainer} />
+        <Route path="/alan" component={AppContainer} />
+      </Switch>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );

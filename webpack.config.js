@@ -4,13 +4,15 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['.jsx', '.scss', '.js', '.json'],
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist')
+    contentBase: path.join(__dirname, 'dist'),
+    publicPath: '/',
+    historyApiFallback: true,
   },
   module: {
     rules: [
