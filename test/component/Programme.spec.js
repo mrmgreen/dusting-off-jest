@@ -26,5 +26,5 @@ describe("<Programme>", () => {
     const randomAlanQuote = "Jet from Gladiators";
     const component = shallow(<Programme randomAlanQuote={randomAlanQuote} />)
     expect(component.find('.randomAlanQuote').text()).to.deep.equal(randomAlanQuote);
-  })
+  });
 });

@@ -5,6 +5,7 @@ import { fetchRandomAlanQuote } from '../actions';
 
 class AppContainer extends React.Component {
   constructor(props) {
+    console.log('props ===', props);
     super(props);
     this.handleClick = ::this.handleClick
   }
@@ -28,6 +29,7 @@ class AppContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    pathname: state.router.location.pathname,
     quotes: state.quotes,
     randomAlanQuote: state.randomAlanQuote,
   }

@@ -32,8 +32,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={AppContainer} />
-        <Route path="/alan" component={AppContainer} />
+        <Route component={AppContainer} />
       </Switch>
     </ConnectedRouter>
   </Provider>,
