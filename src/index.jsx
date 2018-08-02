@@ -7,11 +7,13 @@ import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router';
 import logger from 'redux-logger';
-import aReducer from './reducers';
+import rootReducer from './reducers';
 import AppContainer from './containers/AppContainer';
+import programmeNames from "./config/programmeNames";
 
 const history = createBrowserHistory();
-const initialQuotes = { quotes: [
+const initialState = { programmeNames,
+  quotes: [
   "I'd just like to fly a helicopter all around Norfolk. You know, swoop down over a field. Scare a donkey so that it falls into a river. Hover over one of those annoying families that go on holidays on bikes. And shout at them \"get out of the area!\" and watch them panic!",
   "Sunday Bloody Sunday. What a great song. It really encapsulates the frustration of a Sunday, doesn't it?",
   "Jet from Gladiators to host a millennium barn dance at Yeovil aerodrome. Properly policed. It must not, repeat not, turn into an all-night rave.",
@@ -19,8 +21,8 @@ const initialQuotes = { quotes: [
 ]};
 
 const store = createStore(
-  connectRouter(history)(aReducer),
-  initialQuotes,
+  connectRouter(history)(rootReducer),
+  initialState,
   compose(
     applyMiddleware(
         routerMiddleware(history), thunkMiddleware, logger

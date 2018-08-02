@@ -1,17 +1,24 @@
-import { REQUEST_RANDOM_ALAN_QUOTE, RECEIVED_RANDOM_ALAN_QUOTE } from '../actions';
+import { combineReducers } from 'redux';
+import { REQUEST_RANDOM_QUOTE, RECEIVED_RANDOM_QUOTE } from '../actions';
 
-export default function(state=1, action) {
+export const quotes = function(state=1, action) {
   switch(action.type) {
-    case REQUEST_RANDOM_ALAN_QUOTE:
+    case REQUEST_RANDOM_QUOTE:
       return {
         ...state,
-      }
-    case RECEIVED_RANDOM_ALAN_QUOTE:
+      };
+    case RECEIVED_RANDOM_QUOTE:
       return {
         ...state,
-        randomAlanQuote: action.randomAlanQuote
-      }
+        randomQuote: action.randomQuote
+      };
     default:
       return state
   }
-}
+};
+
+const Reducer = combineReducers({
+  quotes
+});
+
+export default Reducer;

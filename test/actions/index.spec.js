@@ -1,4 +1,4 @@
-import { fetchRandomAlanQuote, REQUEST_RANDOM_ALAN_QUOTE, RECEIVED_RANDOM_ALAN_QUOTE } from '../../src/actions';
+import { fetchRandomAlanQuote, REQUEST_RANDOM_QUOTE, RECEIVED_RANDOM_QUOTE } from '../../src/actions';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
@@ -17,11 +17,11 @@ describe('fetchRandomAlanQuote', () => {
     const thunk = fetchRandomAlanQuote();
     const action = thunk(dispatchStub);
 
-    const requestRandomAlanQuoteAction = { type: REQUEST_RANDOM_ALAN_QUOTE };
+    const requestRandomAlanQuoteAction = { type: REQUEST_RANDOM_QUOTE };
     const receivedRandomAlanQuoteAction =
     {
-      type: RECEIVED_RANDOM_ALAN_QUOTE,
-      randomAlanQuote: JSON.parse(jsonValue),
+      type: RECEIVED_RANDOM_QUOTE,
+      randomQuote: JSON.parse(jsonValue),
     };
 
     expect(dispatchStub.calledWith(requestRandomAlanQuoteAction)).to.equal(true);

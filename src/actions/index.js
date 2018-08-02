@@ -1,15 +1,15 @@
-export const REQUEST_RANDOM_ALAN_QUOTE = 'REQUEST_RANDOM_ALAN_QUOTE'
+export const REQUEST_RANDOM_QUOTE = 'REQUEST_RANDOM_QUOTE'
 function requestRandomAlanQuote() {
   return {
-    type: REQUEST_RANDOM_ALAN_QUOTE,
+    type: REQUEST_RANDOM_QUOTE,
   }
 }
 
-export const RECEIVED_RANDOM_ALAN_QUOTE = 'RECEIVED_RANDOM_ALAN_QUOTE'
+export const RECEIVED_RANDOM_QUOTE = 'RECEIVED_RANDOM_QUOTE'
 function receivedRandomAlanQuote(randomAlanQuote) {
   return {
-    type: RECEIVED_RANDOM_ALAN_QUOTE,
-    randomAlanQuote,
+    type: RECEIVED_RANDOM_QUOTE,
+    randomAlanQuote: randomQuote,
   }
 }
 
