@@ -20,7 +20,7 @@ class AppContainer extends React.Component {
         title="Alan"
         listOfQuotes={this.props.listOfQuotes}
         handleClick={this.handleClick}
-        randomAlanQuote={this.props.randomQuote}
+        randomQuote={this.props.randomQuote}
       />
     )
   }
@@ -31,7 +31,7 @@ const mapStateToProps = state => {
     pathname: state.router.location.pathname,
     programmeNames: state.programmeNames,
     listOfQuotes: state.quotes.listOfQuotes,
-    randomQuote: state.randomQuote,
+    randomQuote: state.quotes.randomQuote,
   }
 }
 
