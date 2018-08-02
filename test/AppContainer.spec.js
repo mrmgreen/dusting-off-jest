@@ -6,7 +6,7 @@ import { expect } from 'chai';
 
 describe("<AppContainer />", () => {
   describe("if pathname has a recognised programme name", () => {
-    it("the will render a Programme component", () => {
+    it("will render a Programme component", () => {
       const programmeNames = ["gizmo"];
       const component = shallow(<AppContainer config={programmeNames} pathname="gizmo"/>);
       expect(component.find(Programme).length).to.equal(1);

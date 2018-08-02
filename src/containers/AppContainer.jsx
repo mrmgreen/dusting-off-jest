@@ -5,7 +5,6 @@ import { fetchRandomAlanQuote } from '../actions';
 
 class AppContainer extends React.Component {
   constructor(props) {
-    console.log('props ===', props);
     super(props);
     this.handleClick = ::this.handleClick
   }
@@ -19,7 +18,7 @@ class AppContainer extends React.Component {
     return (
       <Programme
         title="Alan"
-        quotes={this.props.quotes}
+        listOfQuotes={this.props.listOfQuotes}
         handleClick={this.handleClick}
         randomAlanQuote={this.props.randomQuote}
       />
@@ -31,7 +30,7 @@ const mapStateToProps = state => {
   return {
     pathname: state.router.location.pathname,
     programmeNames: state.programmeNames,
-    quotes: state.quotes,
+    listOfQuotes: state.quotes.listOfQuotes,
     randomQuote: state.randomQuote,
   }
 }

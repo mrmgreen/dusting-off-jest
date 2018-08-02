@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RandomQuotesButton from './RandomQuotesButton'
 
-function Programme({ title, quotes, handleClick, randomQuote }) {
+function Programme({ title, programmeNames, listOfQuotes, handleClick, randomQuote }) {
   const displayQuote = function(quote, index) {
     return (
       <div className="quotes" key={index}>{quote}</div>
@@ -11,7 +11,7 @@ function Programme({ title, quotes, handleClick, randomQuote }) {
   return (
     <div>
       <h1>{title}</h1>
-      {quotes && quotes.map(displayQuote)}
+      {listOfQuotes && listOfQuotes.map(displayQuote)}
       <hr />
       <RandomQuotesButton handleClick={handleClick} />
       <h2 className="randomQuote">{randomQuote}</h2>
@@ -22,9 +22,10 @@ function Programme({ title, quotes, handleClick, randomQuote }) {
 
 Programme.propTypes = {
   title: PropTypes.string,
-  quotes: PropTypes.arrayOf(PropTypes.string),
+  programmeNames: PropTypes.arrayOf(PropTypes.string),
+  listOfQuotes: PropTypes.arrayOf(PropTypes.string),
   handleClick: PropTypes.func,
   randomQuote: PropTypes.string,
-}
+};
 
 export default Programme
