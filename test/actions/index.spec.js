@@ -9,7 +9,7 @@ describe('fetchRandomAlanQuote', () => {
 
   it('should dispatch requestRandomAlanQuote and receivedRandomAlanQuote', () => {
     const jsonValue = JSON.stringify("hello");
-    const jsonStub = sinon.stub().returns(jsonValue)
+    const jsonStub = sinon.stub().returns(jsonValue);
     const response = { json: jsonStub };
     const fetchStub = sinon.stub().resolves(response);
     global.fetch = fetchStub;

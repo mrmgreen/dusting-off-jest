@@ -1,21 +1,21 @@
 export const REQUEST_RANDOM_QUOTE = 'REQUEST_RANDOM_QUOTE'
-function requestRandomAlanQuote() {
+function requestRandomQuote() {
   return {
     type: REQUEST_RANDOM_QUOTE,
   }
 }
 
 export const RECEIVED_RANDOM_QUOTE = 'RECEIVED_RANDOM_QUOTE'
-function receivedRandomAlanQuote(randomAlanQuote) {
+function receivedRandomQuote(randomQuote) {
   return {
     type: RECEIVED_RANDOM_QUOTE,
-    randomAlanQuote: randomQuote,
+    randomQuote: randomQuote,
   }
 }
 
 export function fetchRandomAlanQuote() {
   return function(dispatch) {
-    dispatch(requestRandomAlanQuote())
+    dispatch(requestRandomQuote())
     return fetch('http://localhost:3000/alan-quote')
     .then(
       response => response.json(),
@@ -23,7 +23,7 @@ export function fetchRandomAlanQuote() {
     )
     .then(
       json => {
-        dispatch(receivedRandomAlanQuote(JSON.parse(json)))
+        dispatch(receivedRandomQuote(JSON.parse(json)))
       }
     )
   }
