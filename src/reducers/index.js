@@ -13,6 +13,10 @@ export const quotes = function(state=1, action) {
   }
 };
 
+export const programmeNames = function(state = [], action) {
+  return state
+};
+
 const rootReducer = combineReducers({
   quotes
 });
