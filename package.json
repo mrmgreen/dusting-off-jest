@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-core/register --require ./test/setup.js --recursive ./test/*/*.spec.js ",
+    "tcomp": "mocha --require babel-core/register --require ./test/setup.js --recursive ./test/component/*/*.spec.js ",
+    "tunit": "mocha --require babel-core/register --require ./test/setup.js --recursive ./test/unit/*.spec.js ",
     "start": "webpack-dev-server --mode development --open-path dist",
     "build": "webpack --mode production"
   },

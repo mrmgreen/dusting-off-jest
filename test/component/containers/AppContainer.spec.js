@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Programme from '../../src/components/Programme';
+import Programme from '../../../src/components/Programme';
 import { expect } from 'chai';
-import AppCon from '../../src/containers/AppContainer';
+import AppCon from '../../../src/containers/AppContainer';
 
 const AppContainer = AppCon.__GetDependency__('AppContainer');
 
-describe.only("<AppContainer />", () => {
+describe("<AppContainer />", () => {
   describe("if pathname has a recognised programme name", () => {
     it("AppContainer will render a Programme component", () => {
       const programmeNames = ["gizmo"];

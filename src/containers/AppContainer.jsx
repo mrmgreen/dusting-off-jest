@@ -7,6 +7,7 @@ class AppContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = ::this.handleClick
+
   }
 
   handleClick(e) {

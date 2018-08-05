@@ -1,5 +1,5 @@
-import { quotes as quotesReducer, programmeNames as programmeNamesReducer } from '../../src/reducers';
-import { RECEIVED_RANDOM_QUOTE } from '../../src/actions';
+import { quotes as quotesReducer, programmeNames as programmeNamesReducer } from '../../../src/reducers/index';
+import { RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
 import { expect } from 'chai';
 
 describe('quotesReducer', () => {

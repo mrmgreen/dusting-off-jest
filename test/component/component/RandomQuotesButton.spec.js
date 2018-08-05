@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import RandomQuotesButton from '../../src/components/RandomQuotesButton';
+import RandomQuotesButton from '../../../src/components/RandomQuotesButton';
 import { expect } from 'chai';
 import sinon from 'sinon';
 

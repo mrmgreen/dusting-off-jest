@@ -1,8 +1,10 @@
-import { fetchRandomAlanQuote, REQUEST_RANDOM_QUOTE, RECEIVED_RANDOM_QUOTE } from '../../src/actions';
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { __RewireAPI__ as actionsModule } from '../../../src/actions/index';
+const fetchRandomAlanQuote = actionsModule.__GetDependency__('fetchRandomAlanQuote');
+import { fetchRandomQuote, REQUEST_RANDOM_QUOTE, RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
 
-describe('fetchRandomAlanQuote', () => {
+describe.only('fetchRandomAlanQuote', () => {
   it('should return a function', () => {
     expect(fetchRandomAlanQuote()).to.be.a('function');
   });
@@ -31,4 +33,11 @@ describe('fetchRandomAlanQuote', () => {
       expect(dispatchStub.calledWith(receivedRandomAlanQuoteAction)).to.equal(true);
     }).catch(er => expect(er).to.equal(false))
   });
+});
+
+describe('fetchRandomQuote', () => {
+  it('should return a function', () => {
+    expect(fetchRandomQuote).to.be.a('function');
+  });
+  it('should call')
 });
