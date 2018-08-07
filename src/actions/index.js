@@ -15,7 +15,7 @@ function receivedRandomQuote(randomQuote) {
 
 export function fetchRandomQuote() {
   return function(dispatch) {
-    dispatch(requestRandomQuote())
+    dispatch(requestRandomQuote());
     return fetch('http://localhost:3000/alan-quote')
     .then(
       response => response.json(),
@@ -26,5 +26,12 @@ export function fetchRandomQuote() {
         dispatch(receivedRandomQuote(JSON.parse(json)))
       }
     )
+  }
+}
+
+export const NEW_REQUEST_RANDOM_QUOTE = 'NEW_REQUEST_RANDOM_QUOTE';
+export function newRequestRandomQuote() {
+  return {
+    type: NEW_REQUEST_RANDOM_QUOTE
   }
 }

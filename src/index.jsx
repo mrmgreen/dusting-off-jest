@@ -11,7 +11,7 @@ import createSagaMiddleware from 'redux-saga'
 import rootReducer from './reducers';
 import AppContainer from './containers/AppContainer';
 import programmeNames from "./config/programmeNames";
-import { helloSaga } from './sagas';
+import { watchNewRandomRequestQuote } from './sagas';
 
 const history = createBrowserHistory();
 const initialState = { programmeNames,
@@ -36,7 +36,7 @@ const store = createStore(
   ),
 );
 
-sagaMiddleware.run(helloSaga);
+sagaMiddleware.run(watchNewRandomRequestQuote);
 
 ReactDOM.render(
   <Provider store={store}>

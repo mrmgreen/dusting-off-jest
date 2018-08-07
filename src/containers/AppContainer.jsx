@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Programme from '../components/Programme';
-import { fetchRandomAlanQuote } from '../actions';
+import { fetchRandomQuote, newRequestRandomQuote } from '../actions';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -12,12 +12,12 @@ class AppContainer extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.fetchRandomAlanQuote();
+    this.props.fetchRandomQuote();
   }
 
   handleOtherClick(e){
     e.preventDefault();
-    this.props.fetchRandomAlanQuote();
+    this.props.newRequestRandomQuote();
   }
 
   getProgramme(pathname, programmeNames) {
@@ -57,7 +57,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRandomAlanQuote: () => dispatch(fetchRandomAlanQuote())
+    fetchRandomQuote: () => dispatch(fetchRandomQuote()),
+    newRequestRandomQuote: () => dispatch(newRequestRandomQuote())
   }
 };
 
