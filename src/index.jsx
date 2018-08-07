@@ -7,9 +7,11 @@ import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga'
 import rootReducer from './reducers';
 import AppContainer from './containers/AppContainer';
 import programmeNames from "./config/programmeNames";
+import { helloSaga } from './sagas';
 
 const history = createBrowserHistory();
 const initialState = { programmeNames,
@@ -23,15 +25,18 @@ const initialState = { programmeNames,
   }
 };
 
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   connectRouter(history)(rootReducer),
   initialState,
   compose(
     applyMiddleware(
-        routerMiddleware(history), thunkMiddleware, logger
+        routerMiddleware(history), thunkMiddleware, sagaMiddleware, logger
     ),
   ),
 );
+
+sagaMiddleware.run(helloSaga);
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,3 +1,3 @@
-const programmeNames = ["alan", "pulp"];
+const programmeNames = ["/alan", "/pulp"];
 
 export default programmeNames;

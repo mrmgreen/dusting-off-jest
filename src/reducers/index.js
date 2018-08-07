@@ -18,7 +18,8 @@ export const programmeNames = function(state = [], action) {
 };
 
 const rootReducer = combineReducers({
-  quotes
+  quotes,
+  programmeNames,
 });
 
 export default rootReducer;
