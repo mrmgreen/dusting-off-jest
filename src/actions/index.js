@@ -13,7 +13,7 @@ function receivedRandomQuote(randomQuote) {
   }
 }
 
-function fetchRandomAlanQuote() {
+export function fetchRandomQuote() {
   return function(dispatch) {
     dispatch(requestRandomQuote())
     return fetch('http://localhost:3000/alan-quote')
@@ -27,8 +27,4 @@ function fetchRandomAlanQuote() {
       }
     )
   }
-}
-
-export function fetchRandomQuote(programme) {
-
 }

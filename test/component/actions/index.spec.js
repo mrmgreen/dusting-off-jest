@@ -1,12 +1,11 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { __RewireAPI__ as actionsModule } from '../../../src/actions/index';
-const fetchRandomAlanQuote = actionsModule.__GetDependency__('fetchRandomAlanQuote');
 import { fetchRandomQuote, REQUEST_RANDOM_QUOTE, RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
 
-describe.only('fetchRandomAlanQuote', () => {
+describe.only('fetchRandomQuote', () => {
   it('should return a function', () => {
-    expect(fetchRandomAlanQuote()).to.be.a('function');
+    expect(fetchRandomQuote()).to.be.a('function');
   });
 
   it('should dispatch requestRandomAlanQuote and receivedRandomAlanQuote', () => {
@@ -16,7 +15,7 @@ describe.only('fetchRandomAlanQuote', () => {
     const fetchStub = sinon.stub().resolves(response);
     global.fetch = fetchStub;
     const dispatchStub = sinon.stub();
-    const thunk = fetchRandomAlanQuote();
+    const thunk = fetchRandomQuote();
     const action = thunk(dispatchStub);
 
     const requestRandomAlanQuoteAction = { type: REQUEST_RANDOM_QUOTE };
