@@ -20,29 +20,26 @@ class AppContainer extends React.Component {
     this.props.newRequestRandomQuote();
   }
 
-  getProgramme(pathname, programmeNames) {
-    if (programmeNames && programmeNames.includes(pathname)) {
-      return {
-        title: pathname,
-        handleClick: pathname === "/alan" ? this.handleClick : this.handleOtherClick,
-      }
-    }
+  getProgramme(pathname) {
     return {
-      title: 'mr miyagi',
-      handleClick: this.handleClick,
+      title: pathname,
+      handleClick: pathname === "/alan" ? this.handleClick : this.handleOtherClick,
     }
   }
 
   render() {
-    const { title, handleClick } = this.getProgramme(this.props.pathname, this.props.programmeNames);
-    return (
-      <Programme
-        title={ title }
-        listOfQuotes={this.props.listOfQuotes}
-        handleClick={ handleClick }
-        randomQuote={this.props.randomQuote}
-      />
-    )
+    if (this.props.programmeNames && this.props.programmeNames.includes(this.props.pathname)) {
+      const { title, handleClick } = this.getProgramme(this.props.pathname);
+      return (
+        <Programme
+          title={ title }
+          listOfQuotes={this.props.listOfQuotes}
+          handleClick={ handleClick }
+          randomQuote={this.props.randomQuote}
+        />
+      )
+    }
+    return null
   }
 }
 

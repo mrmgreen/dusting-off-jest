@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import { __RewireAPI__ as actionsModule } from '../../../src/actions/index';
 import { fetchRandomQuote, REQUEST_RANDOM_QUOTE, RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
 
-describe.only('fetchRandomQuote', () => {
+describe('fetchRandomQuote', () => {
   it('should return a function', () => {
     expect(fetchRandomQuote()).to.be.a('function');
   });
@@ -32,11 +32,4 @@ describe.only('fetchRandomQuote', () => {
       expect(dispatchStub.calledWith(receivedRandomAlanQuoteAction)).to.equal(true);
     }).catch(er => expect(er).to.equal(false))
   });
-});
-
-describe('fetchRandomQuote', () => {
-  it('should return a function', () => {
-    expect(fetchRandomQuote).to.be.a('function');
-  });
-  it('should call')
 });
