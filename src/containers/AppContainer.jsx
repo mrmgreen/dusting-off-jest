@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Programme from '../components/Programme';
-import { fetchRandomQuote, newRequestRandomQuote } from '../actions';
+import { thunkFetchRandomQuote, newRequestRandomQuote } from '../actions';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class AppContainer extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.fetchRandomQuote();
+    this.props.thunkFetchRandomQuote();
   }
 
   handleOtherClick(e){
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRandomQuote: () => dispatch(fetchRandomQuote()),
+    thunkFetchRandomQuote: () => dispatch(thunkFetchRandomQuote()),
     newRequestRandomQuote: () => dispatch(newRequestRandomQuote())
   }
 };

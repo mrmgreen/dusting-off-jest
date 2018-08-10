@@ -13,7 +13,7 @@ function receivedRandomQuote(randomQuote) {
   }
 }
 
-export function fetchRandomQuote() {
+export function thunkFetchRandomQuote() {
   return function(dispatch) {
     dispatch(requestRandomQuote());
     return fetch('http://localhost:3000/alan-quote')
