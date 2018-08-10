@@ -19,7 +19,7 @@ export function thunkFetchRandomQuote() {
     return fetch('http://localhost:3000/alan-quote')
     .then(
       response => response.json(),
-      error => console.log('An error in fetchRandomAlanQuote occurred: ', error)
+      error => console.log('An error in thunkFetchRandomQuote occurred: ', error)
     )
     .then(
       json => {

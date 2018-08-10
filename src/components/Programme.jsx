@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RandomQuotesButton from './RandomQuotesButton'
+import RandomQuotesButton from './RandomQuotesButton';
+import Button from '@material-ui/core/Button';
 
 function Programme({ title, programmeNames, listOfQuotes, handleClick, randomQuote }) {
   const displayQuote = function(quote, index) {
@@ -11,6 +12,9 @@ function Programme({ title, programmeNames, listOfQuotes, handleClick, randomQuo
   return (
     <div>
       <h1>{title}</h1>
+      <Button variant="contained" color="primary">
+        Hello World
+      </Button>
       {listOfQuotes && listOfQuotes.map(displayQuote)}
       <hr />
       <RandomQuotesButton handleClick={handleClick} />
