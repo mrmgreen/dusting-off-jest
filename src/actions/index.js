@@ -1,21 +1,21 @@
-export const REQUEST_RANDOM_QUOTE = 'REQUEST_RANDOM_QUOTE';
-function requestRandomQuote() {
+export const THUNK_REQUEST_RANDOM_QUOTE = 'THUNK_REQUEST_RANDOM_QUOTE';
+function thunkRequestRandomQuote() {
   return {
-    type: REQUEST_RANDOM_QUOTE,
+    type: THUNK_REQUEST_RANDOM_QUOTE,
   }
 }
 
-export const RECEIVED_RANDOM_QUOTE = 'RECEIVED_RANDOM_QUOTE';
-function receivedRandomQuote(randomQuote) {
+export const THUNK_RECEIVED_RANDOM_QUOTE = 'THUNK_RECEIVED_RANDOM_QUOTE';
+function thunkReceivedRandomQuote(randomQuote) {
   return {
-    type: RECEIVED_RANDOM_QUOTE,
+    type: THUNK_RECEIVED_RANDOM_QUOTE,
     randomQuote: randomQuote,
   }
 }
 
 export function thunkFetchRandomQuote() {
   return function(dispatch) {
-    dispatch(requestRandomQuote());
+    dispatch(thunkRequestRandomQuote());
     return fetch('http://localhost:3000/alan-quote')
     .then(
       response => response.json(),
@@ -23,7 +23,7 @@ export function thunkFetchRandomQuote() {
     )
     .then(
       json => {
-        dispatch(receivedRandomQuote(JSON.parse(json)))
+        dispatch(thunkReceivedRandomQuote(JSON.parse(json)))
       }
     )
   }

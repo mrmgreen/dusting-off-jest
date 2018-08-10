@@ -1,5 +1,5 @@
 import { quotes as quotesReducer, programmeNames as programmeNamesReducer } from '../../../src/reducers/index';
-import { RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
+import { THUNK_RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
 import { expect } from 'chai';
 
 describe('quotesReducer', () => {
@@ -7,12 +7,12 @@ describe('quotesReducer', () => {
     expect(quotesReducer(undefined, {})).to.equal(1);
   });
 
-  it('should return payload of action as randomQuote when type is RECEIVED_RANDOM_QUOTE', () => {
+  it('should return payload of action as randomQuote when type is THUNK_RECEIVED_RANDOM_QUOTE', () => {
     const quote = 'Scare a donkey';
     const expectedState = {
       randomQuote: quote,
     };
-    expect(quotesReducer({}, { type: RECEIVED_RANDOM_QUOTE, randomQuote: quote })).to.deep.equal(expectedState);
+    expect(quotesReducer({}, { type: THUNK_RECEIVED_RANDOM_QUOTE, randomQuote: quote })).to.deep.equal(expectedState);
   })
 });
 

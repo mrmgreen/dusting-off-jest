@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { thunkFetchRandomQuote, REQUEST_RANDOM_QUOTE, RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
+import { thunkFetchRandomQuote, THUNK_REQUEST_RANDOM_QUOTE, THUNK_RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
 
 describe('thunkFetchRandomQuote', () => {
   it('should return a function', () => {
@@ -17,10 +17,10 @@ describe('thunkFetchRandomQuote', () => {
     const thunk = thunkFetchRandomQuote();
     const action = thunk(dispatchStub);
 
-    const requestRandomAlanQuoteAction = { type: REQUEST_RANDOM_QUOTE };
+    const requestRandomAlanQuoteAction = { type: THUNK_REQUEST_RANDOM_QUOTE };
     const receivedRandomAlanQuoteAction =
     {
-      type: RECEIVED_RANDOM_QUOTE,
+      type: THUNK_RECEIVED_RANDOM_QUOTE,
       randomQuote: JSON.parse(jsonValue),
     };
 
