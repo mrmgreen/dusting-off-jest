@@ -1,10 +1,9 @@
 import { quotes as quotesReducer, programmeNames as programmeNamesReducer } from '../../../src/reducers/index';
 import { THUNK_RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
-import { expect } from 'chai';
 
 describe('quotesReducer', () => {
   it('should return the initial type', () => {
-    expect(quotesReducer(undefined, {})).to.equal(1);
+    expect(quotesReducer(undefined, {})).toEqual(1);
   });
 
   it('should return payload of action as randomQuote when type is THUNK_RECEIVED_RANDOM_QUOTE', () => {
@@ -12,16 +11,16 @@ describe('quotesReducer', () => {
     const expectedState = {
       randomQuote: quote,
     };
-    expect(quotesReducer({}, { type: THUNK_RECEIVED_RANDOM_QUOTE, randomQuote: quote })).to.deep.equal(expectedState);
+    expect(quotesReducer({}, { type: THUNK_RECEIVED_RANDOM_QUOTE, randomQuote: quote })).toEqual(expectedState);
   })
 });
 
 describe('programmeNamesReducer', () => {
   it('default state should be an empty array', () => {
-    expect(programmeNamesReducer(undefined, {})).to.deep.equal([]);
+    expect(programmeNamesReducer(undefined, {})).toEqual([]);
   });
   it('should return an array of strings if state is an array of strings', () => {
     const programmeNames = ['pulp fiction', 'super man'];
-    expect(programmeNamesReducer(programmeNames, {})).to.equal(programmeNames);
+    expect(programmeNamesReducer(programmeNames, {})).toEqual(programmeNames);
   });
 });

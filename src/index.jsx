@@ -14,7 +14,8 @@ import programmeNames from "./config/programmeNames";
 import { watchNewRandomRequestQuote } from './sagas';
 
 const history = createBrowserHistory();
-const initialState = { programmeNames,
+const initialState = { 
+  programmeNames,
   quotes: {
     listOfQuotes: [
       "I'd just like to fly a helicopter all around Norfolk. You know, swoop down over a field. Scare a donkey so that it falls into a river. Hover over one of those annoying families that go on holidays on bikes. And shout at them \"get out of the area!\" and watch them panic!",

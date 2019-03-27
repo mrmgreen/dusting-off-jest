@@ -1,34 +1,29 @@
-import { expect } from 'chai';
-import sinon from 'sinon';
 import { thunkFetchRandomQuote, THUNK_REQUEST_RANDOM_QUOTE, THUNK_RECEIVED_RANDOM_QUOTE } from '../../../src/actions/index';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk'
+
+const mockStore = configureStore([thunk]);
 
 describe('thunkFetchRandomQuote', () => {
   it('should return a function', () => {
-    expect(thunkFetchRandomQuote()).to.be.a('function');
+    expect(typeof thunkFetchRandomQuote()).toEqual('function');
   });
 
   it('should dispatch requestRandomAlanQuote and receivedRandomAlanQuote', () => {
     const jsonValue = JSON.stringify("hello");
-    const jsonStub = sinon.stub().returns(jsonValue);
+    const jsonStub = jest.fn(() => jsonValue);
     const response = { json: jsonStub };
-    const fetchStub = sinon.stub().resolves(response);
-    global.fetch = fetchStub;
-    const dispatchStub = sinon.stub();
-    const thunk = thunkFetchRandomQuote();
-    const action = thunk(dispatchStub);
+    const fetchMock = jest.fn().mockResolvedValue(response);
+    global.fetch = fetchMock;
 
     const requestRandomAlanQuoteAction = { type: THUNK_REQUEST_RANDOM_QUOTE };
-    const receivedRandomAlanQuoteAction =
-    {
-      type: THUNK_RECEIVED_RANDOM_QUOTE,
-      randomQuote: JSON.parse(jsonValue),
-    };
+    const receivedRandomAlanQuoteAction = { type: THUNK_RECEIVED_RANDOM_QUOTE, randomQuote: JSON.parse(jsonValue) };
+    const expectedActions = [requestRandomAlanQuoteAction, receivedRandomAlanQuoteAction];
 
-    expect(dispatchStub.calledWith(requestRandomAlanQuoteAction)).to.equal(true);
-
-    action.then(() => {
-      expect(dispatchStub.calledTwice).to.equal(true);
-      expect(dispatchStub.calledWith(receivedRandomAlanQuoteAction)).to.equal(true);
-    }).catch(er => expect(er).to.equal(false))
+    const store = mockStore();
+    return store.dispatch(thunkFetchRandomQuote())
+      .then(() => {
+        expect(store.getActions()).toEqual(expectedActions)
+      });
   });
 });

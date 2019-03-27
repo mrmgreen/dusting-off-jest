@@ -1,13 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Programme from '../../../src/components/Programme';
-import { expect } from 'chai';
 
 describe("<Programme>", () => {
   it('should render title prop as text', () => {
     const text = "the title";
     const component = shallow(<Programme title={text}/>);
-    expect(component.find("h1").text()).to.equal(text);
+    expect(component.find("h1").text()).toEqual(text);
   });
   it('should display quotes', () => {
     const quotes = [
@@ -19,12 +18,12 @@ describe("<Programme>", () => {
     const component = mount(<Programme quotes={quotes} />);
     const quotesInDom = component.find('.quotes');
     quotesInDom.forEach((node, index) => {
-      expect(node.text()).to.equal(quotes[index]);
+      expect(node.text()).toEqual(quotes[index]);
     })
   });
   it('should render randomQuote from the state', () => {
     const randomAlanQuote = "Jet from Gladiators";
     const component = shallow(<Programme randomQuote={randomAlanQuote} />)
-    expect(component.find('.randomQuote').text()).to.deep.equal(randomAlanQuote);
+    expect(component.find('.randomQuote').text()).toEqual(randomAlanQuote);
   });
 });

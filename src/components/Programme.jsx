@@ -4,11 +4,9 @@ import RandomQuotesButton from './RandomQuotesButton';
 import Button from '@material-ui/core/Button';
 
 function Programme({ title, programmeNames, listOfQuotes, handleClick, randomQuote }) {
-  const displayQuote = function(quote, index) {
-    return (
-      <div className="quotes" key={index}>{quote}</div>
-    )
-  };
+  const displayQuote = (quote, index) => (
+    <div className="quotes" key={index}>{quote}</div>
+  )
   return (
     <div>
       <h1>{title}</h1>
@@ -19,7 +17,6 @@ function Programme({ title, programmeNames, listOfQuotes, handleClick, randomQuo
       <hr />
       <RandomQuotesButton handleClick={handleClick} />
       <h2 className="randomQuote">{randomQuote}</h2>
-
     </div>
   )
 }
