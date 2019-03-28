@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Programme from '../components/Programme';
 import { thunkFetchRandomQuote, newRequestRandomQuote } from '../actions';
+import { Link, withRouter } from 'react-router-dom';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class AppContainer extends React.Component {
   }
 
   render() {
-    if (this.props.programmeNames && this.props.programmeNames.includes(this.props.pathname)) {
+    if (this.props.programmeNames && this.props.programmeNames.includes(location.pathname)) {
       const { title, handleClick } = this.getProgramme(this.props.pathname);
       return (
         <Programme
@@ -39,13 +40,12 @@ class AppContainer extends React.Component {
         />
       )
     }
-    return null
+    return (<h1>Here</h1>)
   }
 }
 
 const mapStateToProps = state => {
   return {
-    pathname: state.router.location.pathname,
     programmeNames: state.programmeNames,
     listOfQuotes: state.quotes.listOfQuotes,
     randomQuote: state.quotes.randomQuote,
@@ -59,4 +59,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppContainer))
