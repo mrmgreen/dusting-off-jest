@@ -1,0 +1,10 @@
+@import "normalize";
+@include normalize();
+
+h1 {
+  font-size:20px;
+}
+
+.container {
+  display: flex;
+}

@@ -7,30 +7,32 @@ import { Link, withRouter } from 'react-router-dom';
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = ::this.handleClick;
-    this.handleOtherClick= ::this.handleOtherClick;
+    this.handleClick = ::this.handleClickWithThunk;
+    this.handleOtherClick= ::this.handleClickWithSaga;
   }
 
-  handleClick(e) {
+  handleClickWithThunk(e) {
     e.preventDefault();
     this.props.thunkFetchRandomQuote();
   }
 
-  handleOtherClick(e){
+  handleClickWithSaga(e){
     e.preventDefault();
     this.props.newRequestRandomQuote();
   }
 
-  getProgramme(pathname) {
+  getProgramme(programme) {
     return {
-      title: pathname,
-      handleClick: pathname === "/alan" ? this.handleClick : this.handleOtherClick,
+      title: programme,
+      handleClick: programme === "alan" ? this.handleClickWithThunk : this.handleClickWithSaga,
     }
   }
 
   render() {
-    if (this.props.programmeNames && this.props.programmeNames.includes(location.pathname)) {
-      const { title, handleClick } = this.getProgramme(this.props.pathname);
+    const { pathname } = this.props.location;
+    const pathnameAsProgramme = pathname.replace('/', '');
+    if (this.props.programmeNames && this.props.programmeNames.includes(pathnameAsProgramme)) {
+      const { title, handleClick } = this.getProgramme(pathnameAsProgramme);
       return (
         <Programme
           title={ title }
@@ -40,7 +42,18 @@ class AppContainer extends React.Component {
         />
       )
     }
-    return (<h1>Here</h1>)
+    return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/alan">Aha with Alan Partidge</Link>
+        </li>
+        <li>
+          <Link to="/pulp">Pulp Fiction</Link>
+        </li>
+      </ul>
+    </nav>
+   )
   }
 }
 
